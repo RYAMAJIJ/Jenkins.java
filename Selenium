@@ -1,0 +1,38 @@
+package Assingment;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assignment2 {
+
+public static void main(String[] args) throws InterruptedException {
+// set the chrome driver exe file path
+System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+
+//Parent type ref ---- child obj
+//Webdriver ---- Chromedriver obj
+
+// instantiate the chrome driver
+WebDriver driver=new ChromeDriver();
+// to load the web page
+driver.get("https://www.bing.com/ ");
+
+Thread.sleep(1000);
+
+// to maximize the web page
+driver.manage().window().maximize();
+
+//to search for text box and send data
+WebElement txt= driver.findElement(By.id("sb_form_q"));
+Thread.sleep(500);
+txt.sendKeys("Capgemini India");
+driver.findElement(By.id("search_icon")).click();
+
+//to find the address of office and print it
+String address= driver.findElement(By.xpath("/html/body/div[1]/aside[1]/ol/li/div[1]/div[2]/div/div/div[4]/div[1]/div/span/a")).getText();
+System.out.println("The address is: " +address);
+driver.close();
+
+ }
+  }
